@@ -1,4 +1,5 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect} from "react";
+import { BiSearchAlt2 } from "react-icons/bi";
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -13,19 +14,33 @@ const Home = () => {
 
         const data = await res.json();
 
+        setTopMovies(data.results);
     }
 
     useEffect(() => {
 
         const topRatedURL = `${moviesURL}top_rated?api_key=${apiKey}`;
 
-        console.log(topRatedURL);
+        getTopRatedMovies(topRatedURL);
 
     }, [])
     return (
-        <div>
-            Home
+
+        <div className="container">
+            <div className="haeder">
+                <h1>Melhores Filmes</h1>
+                <div className="searchBar">
+                    <input type="text" placeholder="Pesquisar filme"/>
+                    <button>
+                        <BiSearchAlt2 />
+                    </button>
+                </div>
+            </div>
+            <div className="moviesContainer">
+                {topMovies && topMovies.map((movie) => <p>{movie.title}</p>)}
+            </div>
         </div>
+
     );
 };
 
