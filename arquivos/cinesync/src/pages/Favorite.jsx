@@ -1,7 +1,7 @@
 const Favorite = () => {
     return (
         <div>
-            Favorite
+            Favoritos
         </div>
     );
 };
