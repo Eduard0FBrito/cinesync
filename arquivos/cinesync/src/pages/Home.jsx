@@ -1,5 +1,6 @@
 import { useState, useEffect} from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
+import MovieCard from "../components/movieCard";
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -37,7 +38,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="moviesContainer">
-                {topMovies && topMovies.map((movie) => <p>{movie.title}</p>)}
+                {topMovies && topMovies.map((movie) => <MovieCard movie={movie}/>)}
             </div>
         </div>
 
