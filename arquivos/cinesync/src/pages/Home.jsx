@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { BiSearchAlt2 } from "react-icons/bi";
 import MovieCard from "../components/movieCard";
-
-import "./MoviesGrid.css";
+import Header from "../components/Header"; // Importa o novo componente Header
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -38,15 +36,7 @@ const Home = () => {
 
     return (
         <div className="container">
-            <div className="haeder">
-                <h1>Melhores Filmes</h1>
-                <div className="searchBar">
-                    <input type="text" placeholder="Pesquisar filme" />
-                    <button>
-                        <BiSearchAlt2 />
-                    </button>
-                </div>
-            </div>
+            {}
             <div className="moviesContainer">
                 {topMovies.length > 0 && genres && Object.keys(genres).length > 0 && topMovies.map((movie) => (
                     <MovieCard movie={movie} genres={genres} key={movie.id} />
