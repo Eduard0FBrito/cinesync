@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
 const imagesURL = import.meta.env.VITE_IMG;
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, genres }) => {
+  const firstGenreId = movie.genre_ids[0];
+  
+  const firstGenreName = genres[firstGenreId];
+
   return (
     <div className="movie-card">
       <div className="movie-poster-container">
@@ -18,8 +21,8 @@ const MovieCard = ({ movie }) => {
       <div className="movie-details">
         <h3>{movie.title}</h3>
         <p className="movie-meta">
-          {/* Gênero e Ano */}
-          {movie.genre_ids ? `Gênero` : ''} • {movie.release_date.substring(0, 4)}
+          {}
+          {firstGenreName && `${firstGenreName} •`} {movie.release_date.substring(0, 4)}
         </p>
       </div>
     </div>
