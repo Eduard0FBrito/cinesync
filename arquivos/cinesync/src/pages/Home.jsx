@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import MovieCard from "../components/movieCard";
 
+import "./MoviesGrid.css";
+
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 const genresURL = import.meta.env.VITE_GENRES;
