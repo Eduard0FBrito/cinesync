@@ -6,7 +6,7 @@ import App from "./App";
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
 import Search from "./pages/Search";
-import Favorite from "./pages/Search";
+import Favorite from "./pages/Favorite";
 
 import "./index.css";
 
