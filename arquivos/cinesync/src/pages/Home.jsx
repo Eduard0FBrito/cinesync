@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import MovieCard from "../components/movieCard";
+import MovieCard from "../components/MovieCard";
 import Header from "../components/Header"; // Importa o novo componente Header
 
 const moviesURL = import.meta.env.VITE_API;
