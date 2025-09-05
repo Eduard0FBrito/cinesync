@@ -307,3 +307,34 @@ header#header {
     font-size: 0.9rem;
     color: #fff;
 }
+
+/* Container para o título e o ícone, usando Flexbox para alinhamento */
+.title-and-favorite {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 0.5rem; /* Ajusta o espaçamento abaixo do título */
+}
+
+/* Estilo para o botão de favoritar como um ícone */
+.favorite-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: #f5f7f8; /* Cor branca para o ícone não favoritado */
+    transition: color 0.3s;
+}
+
+.favorite-icon-btn:hover {
+    color: #F4CE14; /* Amarelo no hover para o ícone não favoritado */
+}
+
+/* Cor do ícone quando o filme está favoritado */
+.favorite-icon-btn.favorited {
+    color: #F4CE14; /* Amarelo para indicar que já está favoritado */
+}
+
+.favorite-icon-btn.favorited:hover {
+    color: #f5f7f8; /* Volta para branco no hover do ícone favoritado */
+}

@@ -38,7 +38,7 @@ const Header = () => {
         </h2>
         <div className="nav-links">
           <Link to="/">Inicio</Link>
-          <Link to="/favorites">Favoritos</Link>
+          <Link to="/favorite">Favoritos</Link>
         </div>
       </nav>
 

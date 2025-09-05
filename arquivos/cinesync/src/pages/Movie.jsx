@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaPlay, FaHeart, FaHeartBroken, FaTicketAlt } from "react-icons/fa";
 
 // URLs da API
 const moviesURL = import.meta.env.VITE_API;
@@ -10,6 +10,29 @@ const Movie = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [credits, setCredits] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  // Função para verificar e carregar o estado de favorito
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setIsFavorite(favorites.some(fav => fav.id === parseInt(id)));
+  }, [id]);
+
+  const handleFavoriteToggle = () => {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    
+    if (isFavorite) {
+      // Remover dos favoritos
+      favorites = favorites.filter(fav => fav.id !== movie.id);
+      setIsFavorite(false);
+    } else {
+      // Adicionar aos favoritos
+      favorites.push(movie);
+      setIsFavorite(true);
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  };
 
   const getMovie = async (url) => {
     const res = await fetch(url);
@@ -31,14 +54,12 @@ const Movie = () => {
     getCredits(creditsUrl);
   }, [id]);
 
-  // Função auxiliar para encontrar o diretor
   const getDirector = (crew) => {
     if (!crew) return "N/A";
     const director = crew.find(member => member.job === "Director");
     return director ? director.name : "N/A";
   };
 
-  // Função auxiliar para obter os 5 primeiros membros do elenco
   const getCast = (cast) => {
     if (!cast) return [];
     return cast.slice(0, 5).map(actor => actor.name).join(", ");
@@ -48,15 +69,23 @@ const Movie = () => {
     <div className="movie-page">
       {movie && credits && (
         <div className="movie-details">
-          {/* Fundo da página */}
           <div className="backdrop">
             <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} />
           </div>
 
           <div className="content">
-            <h1 className="movie-title">{movie.title}</h1>
+            {/* Título e botão de favorito */}
+            <div className="title-and-favorite"> 
+              <h1 className="movie-title">{movie.title}</h1>
+              <button 
+                onClick={handleFavoriteToggle} 
+                className={`favorite-icon-btn ${isFavorite ? 'favorited' : ''}`}
+              >
+                <FaHeart /> 
+              </button>
+            </div>
+            
             <p className="movie-tagline">{movie.tagline}</p>
-
             <div className="meta-info">
               <span className="rating-container">
                 <FaStar /> {movie.vote_average.toFixed(1)} / 10
@@ -67,13 +96,11 @@ const Movie = () => {
             
             <p className="movie-overview">{movie.overview}</p>
 
-            {/* Informações de Diretor e Elenco */}
             <div className="credits-info">
               <p><strong>Diretor:</strong> {getDirector(credits.crew)}</p>
               <p><strong>Elenco Principal:</strong> {getCast(credits.cast)}</p>
             </div>
 
-            {/* Gêneros */}
             <div className="genres-container">
               {movie.genres.map((genre) => (
                 <span key={genre.id} className="genre-tag">{genre.name}</span>
