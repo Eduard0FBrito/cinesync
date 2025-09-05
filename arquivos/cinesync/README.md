@@ -4,11 +4,6 @@
 
 Uma aplicação web para descobrir e gerenciar seus filmes favoritos.
 
-\<br\>
-
-\<p align="center"\>
-\</p\>
-
 ## 🚀 Tecnologias
 
 Este projeto foi desenvolvido com as seguintes tecnologias:
