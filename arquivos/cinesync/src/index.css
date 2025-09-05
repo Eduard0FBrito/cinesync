@@ -17,10 +17,15 @@ a {
     color: #f5f7f8; /* Cor padrão para links, será sobrescrita quando necessário */
     transition: transform 0.3s ease-in-out;
     display: inline-block;
+    z-index: 100;
 }
 
 a:hover {
     transform: scale(1.03);
+}
+
+h2 {
+    z-index: 100;
 }
 
 h2 span {
@@ -133,3 +138,120 @@ h2 span {
     color: #aaa;
     font-size: 0.9rem;
 }
+
+/* Estilo para o container da página de filme */
+.movie-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+    color: #f5f7f8;
+}
+
+.movie-page .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.movie-page .backdrop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px);
+}
+
+.movie-page .movie-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 100px; /* Para não ficar atrás da navbar */
+}
+
+.movie-page .content {
+    max-width: 60%;
+}
+
+.movie-page .movie-title {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.movie-page .movie-tagline {
+    font-size: 1.2rem;
+    color: #aaa;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.movie-page .meta-info {
+    font-size: 1rem;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.movie-page .meta-info .rating-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    color: #F4CE14;
+}
+
+.movie-page .meta-info svg {
+    color: #F4CE14;
+}
+
+.movie-page .movie-overview {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #ddd;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.movie-page .buttons-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.movie-page .buttons-container button {
+    background-color: #5d3fd3; /* Cor dos botões */
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.movie-page .buttons-container button:hover {
+    background-color: #7a5cd6;
+}
+
+.movie-page .genres-container {
+    display: flex;
+    gap: 10px;
+}
+
+.movie-page .genre-tag {
+    background-color: #3b3b3b;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+

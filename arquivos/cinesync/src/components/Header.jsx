@@ -11,9 +11,10 @@ const Header = () => {
     ? "Meus Filmes Favoritos"
     : "Melhores Filmes";
 
+  const isMoviePage = location.pathname.includes("/movie/");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     if (!search) return;
 
     navigate(`/search?q=${search}`);
@@ -32,20 +33,22 @@ const Header = () => {
         </div>
       </nav>
 
-      <div className="home-header">
-        <h1>{headerText}</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Pesquise um filme"
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-          />
-          <button type="submit">
-            <BiSearchAlt2 />
-          </button>
-        </form>
-      </div>
+      {!isMoviePage && (
+        <div className="home-header">
+          <h1>{headerText}</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Pesquise um filme"
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            />
+            <button type="submit">
+              <BiSearchAlt2 />
+            </button>
+          </form>
+        </div>
+      )}
     </header>
   );
 };
