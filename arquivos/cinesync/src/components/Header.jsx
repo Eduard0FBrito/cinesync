@@ -11,7 +11,7 @@ const Header = () => {
   const query = searchParams.get("q");
 
   const headerText = () => {
-    if (location.pathname === "/favorites") {
+    if (location.pathname === "/favorite") {
       return "Meus Filmes Favoritos";
     }
     if (location.pathname === "/search") {
